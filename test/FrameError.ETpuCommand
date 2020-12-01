@@ -1,0 +1,155 @@
+#include "..\etpu\_etpu_set\etpu_set_defines.h"
+
+#define RX_CHAN 4
+#define TX_CHAN 5
+
+#define BIT_TIME 100 // 1us
+
+#define RX_BUFFER_ADDR 0x200
+#define TX_BUFFER_ADDR 0x300
+#define BUFFER_SIZE 40
+
+// Set the clock to 200 Mhz (5 ns/clock -->1e7 FemtoSeconds/clock)
+set_clk_period(5000000);
+
+// Engine Configuration Register Functions  (ETPUECR)
+write_entry_table_base_addr(_ENTRY_TABLE_BASE_ADDR_);
+
+// Configure the TCR1 Control Bits, and enable
+write_tcr1_control(2);        // System clock/2,  NOT gated by TCRCLK => 100MHz
+write_tcr1_prescaler(1);
+write_tcr2_control(4);
+write_tcr2_prescaler(1);      // System clock/8 => 25MHz
+write_tcrclk_pin(1);
+
+// connect TX to RX
+place_buffer(TX_CHAN + 32, RX_CHAN);
+
+// Initialize the RX function.
+write_chan_base_addr(       RX_CHAN, 0x100);
+write_chan_func(            RX_CHAN, _FUNCTION_NUM_UART_UART_RX_);
+write_chan_entry_condition( RX_CHAN, _ENTRY_TABLE_TYPE_UART_UART_RX_);
+write_chan_hsrr(            RX_CHAN, ETPU_UART_RX_INIT_TCR1_HSR);
+write_chan_mode(            RX_CHAN, ETPU_UART_FM0_PARITY_ENABLED);
+write_chan_cpr(             RX_CHAN, 3);
+
+write_chan_base_addr(       TX_CHAN, 0x180);
+write_chan_func(            TX_CHAN, _FUNCTION_NUM_UART_UART_TX_);
+write_chan_entry_condition( TX_CHAN, _ENTRY_TABLE_TYPE_UART_UART_TX_);
+write_chan_hsrr(            TX_CHAN, ETPU_UART_TX_INIT_TCR1_HSR);
+write_chan_mode(            TX_CHAN, ETPU_UART_FM0_PARITY_ENABLED);
+write_chan_cpr(             TX_CHAN, 3);
+
+write_chan_data8( RX_CHAN, _CPBA8_UART__bit_count_, 8);
+write_chan_data8( RX_CHAN, _CPBA8_UART__parity_select_, 0); // even
+write_chan_data8( RX_CHAN, _CPBA8_UART__cts_chan_num_, 0xff);
+write_chan_data8( RX_CHAN, _CPBA8_UART__rts_chan_num_, 0xff);
+
+write_chan_data8( RX_CHAN, _CPBA8_UART__tx_enable_chan_num_, 0xff);
+write_chan_data24(RX_CHAN, _CPBA24_UART__tx_enable_post_delay_, 10 * BIT_TIME); // 10 bits
+
+write_chan_data24(RX_CHAN, _CPBA24_UART__bit_time_, BIT_TIME);
+write_chan_data24(RX_CHAN, _CPBA24_UART__stop_time_, BIT_TIME); // stop 1 bit wide
+
+write_chan_data24(RX_CHAN, _CPBA24_UART__rx_buffer_byte_size_, BUFFER_SIZE);
+write_chan_data24(RX_CHAN, _CPBA24_UART__rx_buffer_start_p_, RX_BUFFER_ADDR);
+write_chan_data24(RX_CHAN, _CPBA24_UART__rx_buffer_end_p_, RX_BUFFER_ADDR + BUFFER_SIZE);
+write_chan_data24(RX_CHAN, _CPBA24_UART__rx_rts_halt_threshold_, 32); // rts disabled, don't care
+write_chan_data24(RX_CHAN, _CPBA24_UART__rx_rts_resume_threshold_, 16); // rts disabled, dont' care
+
+write_chan_data24(RX_CHAN, _CPBA24_UART__tx_buffer_byte_size_, BUFFER_SIZE);
+write_chan_data24(RX_CHAN, _CPBA24_UART__tx_buffer_start_p_, TX_BUFFER_ADDR);
+write_chan_data24(RX_CHAN, _CPBA24_UART__tx_buffer_end_p_, TX_BUFFER_ADDR + BUFFER_SIZE);
+
+write_chan_data24(RX_CHAN, _CPBA24_UART__rx_fifo_int_threshold_, 24);
+write_chan_data24(RX_CHAN, _CPBA24_UART__tx_fifo_int_threshold_, 8);
+
+write_chan_data8( TX_CHAN, _CPBA8_UART__bit_count_, 9);
+write_chan_data8( TX_CHAN, _CPBA8_UART__parity_select_, 0); // even
+write_chan_data8( TX_CHAN, _CPBA8_UART__cts_chan_num_, 0xff);
+write_chan_data8( TX_CHAN, _CPBA8_UART__rts_chan_num_, 0xff);
+
+write_chan_data8( TX_CHAN, _CPBA8_UART__tx_enable_chan_num_, 0xff);
+write_chan_data24(TX_CHAN, _CPBA24_UART__tx_enable_post_delay_, 10 * BIT_TIME); // 10 bits
+
+write_chan_data24(TX_CHAN, _CPBA24_UART__bit_time_, BIT_TIME);
+write_chan_data24(TX_CHAN, _CPBA24_UART__stop_time_, BIT_TIME); // stop 1 bit wide
+
+write_chan_data24(TX_CHAN, _CPBA24_UART__rx_buffer_byte_size_, BUFFER_SIZE);
+write_chan_data24(TX_CHAN, _CPBA24_UART__rx_buffer_start_p_, RX_BUFFER_ADDR);
+write_chan_data24(TX_CHAN, _CPBA24_UART__rx_buffer_end_p_, RX_BUFFER_ADDR + BUFFER_SIZE);
+write_chan_data24(TX_CHAN, _CPBA24_UART__rx_rts_halt_threshold_, 32); // rts disabled, don't care
+write_chan_data24(TX_CHAN, _CPBA24_UART__rx_rts_resume_threshold_, 16); // rts disabled, dont' care
+
+write_chan_data24(TX_CHAN, _CPBA24_UART__tx_buffer_byte_size_, BUFFER_SIZE);
+write_chan_data24(TX_CHAN, _CPBA24_UART__tx_buffer_start_p_, TX_BUFFER_ADDR);
+write_chan_data24(TX_CHAN, _CPBA24_UART__tx_buffer_end_p_, TX_BUFFER_ADDR + BUFFER_SIZE);
+
+write_chan_data24(TX_CHAN, _CPBA24_UART__rx_fifo_int_threshold_, 24);
+write_chan_data24(TX_CHAN, _CPBA24_UART__tx_fifo_int_threshold_, 8);
+
+
+write_global_time_base_enable(1);
+
+at_time(5);
+
+// transmit 8 words
+write_global_data32(TX_BUFFER_ADDR+0x00, 0xaa); // p=0
+write_global_data32(TX_BUFFER_ADDR+0x04, 0x15); // p=1
+write_global_data32(TX_BUFFER_ADDR+0x08, 0x33); // p=0
+write_global_data32(TX_BUFFER_ADDR+0x0c, 0xf4); // p=1
+write_global_data32(TX_BUFFER_ADDR+0x10, 0x11); // p=0
+write_global_data32(TX_BUFFER_ADDR+0x14, 0x21); // p=0
+write_global_data32(TX_BUFFER_ADDR+0x18, 0x23); // p=1
+write_global_data32(TX_BUFFER_ADDR+0x1c, 0x66); // p=0
+write_chan_data24(TX_CHAN, _CPBA24_UART__tx_buffer_push_p_, TX_BUFFER_ADDR + 0x20);
+
+at_time(8 + 4*12); // 4 words in
+// no RX interrupt yet
+verify_chan_intr(RX_CHAN, 0);
+// no TX interrupt yet
+verify_chan_intr(TX_CHAN, 0);
+
+at_time(8 + 5*12); // 5 words in
+// no RX interrupt yet
+verify_chan_intr(RX_CHAN, 0);
+// TX interrupt
+verify_chan_intr(TX_CHAN, 1); // 6 word started
+clear_chan_intr(TX_CHAN);
+
+at_time(8 + 6*12); // 6 words in
+// RX interrupt
+verify_chan_intr(RX_CHAN, 1);
+clear_chan_intr(RX_CHAN);
+// no TX interrupt
+verify_chan_intr(TX_CHAN, 0); // interrupt only set right at threshold
+clear_chan_intr(TX_CHAN);
+
+at_time(8 + 8*12); // all 8 words done, parity and framing issues due to bit mismatch
+verify_global_data32(RX_BUFFER_ADDR+0x00, 0x010000aa);
+verify_global_data32(RX_BUFFER_ADDR+0x04, 0x02000015);
+verify_global_data32(RX_BUFFER_ADDR+0x08, 0x01000033);
+verify_global_data32(RX_BUFFER_ADDR+0x0c, 0x020000f4);
+verify_global_data32(RX_BUFFER_ADDR+0x10, 0x01000011);
+verify_global_data32(RX_BUFFER_ADDR+0x14, 0x01000021);
+verify_global_data32(RX_BUFFER_ADDR+0x18, 0x02000023);
+verify_global_data32(RX_BUFFER_ADDR+0x1c, 0x01000066);
+
+verify_chan_data24(RX_CHAN, _CPBA24_UART__rx_buffer_pop_p_, RX_BUFFER_ADDR+0x00);
+verify_chan_data24(RX_CHAN, _CPBA24_UART__rx_buffer_push_p_, RX_BUFFER_ADDR+0x20);
+
+verify_chan_data24(TX_CHAN, _CPBA24_UART__tx_buffer_pop_p_, TX_BUFFER_ADDR+0x20);
+verify_chan_data24(TX_CHAN, _CPBA24_UART__tx_buffer_push_p_, TX_BUFFER_ADDR+0x20);
+
+
+
+
+// Run the simulator for 10 more micro-seconds
+wait_time(10);
+
+#ifdef _ASH_WARE_AUTO_RUN_
+exit();
+#else
+print("All tests are done!!");
+#endif // _ASH_WARE_AUTO_RUN_
+

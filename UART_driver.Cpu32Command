@@ -1,0 +1,38 @@
+// Primary script file  'UART_driver.Cpu32Command'
+
+verify_version_ex(TOOL_DEV_TOOL, 2, 72, 'E', "System DevTool 2.72E or newer required");
+
+// perform basic simulation setup
+
+// set clocks
+
+// Set the host clock to 1000 Mhz (1 ns/clock -->1e6 FemtoSeconds/clock)
+set_clk_period(1000000);
+
+// Set the eTPU clock to 132 Mhz (clk_period in femtoseconds)
+eTPU_A.set_clk_period(7575758); // 132 MHz
+
+
+// configure pin connections
+eTPU_A.place_buffer(32 + 2, 1); // TX_1 -> RX_1
+eTPU_A.place_buffer(32 + 11, 10); // TX_2 -> RX_2
+eTPU_A.place_buffer(32 + 13, 12); // RTS_2 -> CTS_2
+
+// enable interrupt handlers on host, for interrupts from eTPU
+enable_target_interrupts("eTPU_A");
+
+
+// TEST EXECUTION IS ALL IN C CODE (see main.c)
+
+
+at_time(60000);
+
+// verify test ran to completion
+verify_val_int("g_complete_flag", "==", 1);
+
+
+#ifdef _ASH_WARE_AUTO_RUN_
+exit();
+#else
+print("All tests are done!!");
+#endif // _ASH_WARE_AUTO_RUN_

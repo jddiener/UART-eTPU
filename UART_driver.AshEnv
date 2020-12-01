@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<user creator="ASH WARE, Inc." version="2.72.4.0">
+  <source_code_search />
+  <app_dimensions x="-8" y="-8" w="1936" h="1096" />
+  <splitter name="projectBtmSplitter" distance="588" total="982" orientation="horizontal" />
+  <splitter name="projectRhtSplitter" parent="projectBtmSplitter" order="1" distance="210" total="1920" orientation="vertical" />
+  <splitter name="editSplitter" parent="projectRhtSplitter" order="2" distance="825" total="1706" orientation="vertical" />
+  <splitter name="outputSplitter" parent="projectBtmSplitter" order="2" distance="1212" total="1920" orientation="vertical" />
+  <line_info_mgr />
+  <TabPage type="LogicAnalyzer" ctrl="output1TabControl" sel="true">
+    <ScopeSettings selected_channel="2" selected_cursor="1" auto_scroll="True" first_chan="0" width="125" />
+    <ScopeTimes>
+      <LeftSide word_a="0" word_b="12933" word_c="3366901184" />
+      <Width word_a="0" word_b="1151" word_c="740486357" />
+      <LeftCursor word_a="0" word_b="722" word_c="1051239130" />
+      <RightCursor word_a="0" word_b="723" word_c="1638625776" />
+    </ScopeTimes>
+    <ClocksTimeOptions />
+    <TimeDisplayOptions />
+    <ThreadGroups>
+      <Host index="0" group_a="0" group_b="0" group_c="0" group_d="0" group_e="0" group_f="0" group_g="0" group_h="0" />
+      <eTPU_A index="1" group_a="1" group_b="2" group_c="4" group_d="8" group_e="16" group_f="32" group_g="64" group_h="128" />
+    </ThreadGroups>
+    <ScopeChannels>
+      <ScopeChan index="0" name="_ch1.in" alias="RX_1" target_index="1" height="31" chan_state_mask="255" />
+      <ScopeChan index="1" name="_ch2.out" alias="TX_1" target_index="1" height="31" chan_state_mask="255" />
+      <ScopeChan index="3" name="_ch10.in" alias="RX_2" target_index="1" height="31" chan_state_mask="255" />
+      <ScopeChan index="4" name="_ch11.out" alias="TX_2" target_index="1" height="31" chan_state_mask="255" />
+      <ScopeChan index="5" name="_ch12.in" alias="CTS_2" target_index="1" height="31" chan_state_mask="255" />
+      <ScopeChan index="6" name="_ch13.out" alias="RTS_2" target_index="1" height="31" chan_state_mask="255" />
+      <ScopeChan index="7" name="_ch14.out" alias="TXE_2" target_index="1" height="31" chan_state_mask="255" />
+      <ScopeChan index="9" name="_ThreadsIdle" alias="_ThreadsIdle" target_index="1" height="31" />
+      <ScopeChan index="-1" name="_ch3.in" alias="SPI1_MISO" target_index="1" height="0" chan_state_mask="255" />
+      <ScopeChan index="-1" name="_ch1.out" alias="SPI1_SS" target_index="1" height="0" chan_state_mask="255" />
+      <ScopeChan index="-1" name="_ch4.out" alias="SPI1_SCLK" target_index="1" height="0" chan_state_mask="255" />
+      <ScopeChan index="-1" name="_ch5.out" alias="SPI1_MOSI" target_index="1" height="0" chan_state_mask="255" />
+    </ScopeChannels>
+  </TabPage>
+  <TabPage type="Breakpoint" is_closed="true" ctrl="projectTabControl" />
+  <TabPage type="TraceBuf" is_closed="true" ctrl="output2TabControl">
+    <Host />
+    <eTPU_A />
+  </TabPage>
+  <TabPage type="Source" ctrl="edit1TabControl" file="main.c" top_line="226" start_pos="8540" len="0" sel_text="" />
+  <TabPage type="Source" ctrl="edit1TabControl" file="etpu\uart\etpu_uart.c" top_line="237" sel="true" start_pos="13248" len="0" sel_text="" />
+  <TabPage type="Source" ctrl="edit1TabControl" file="etpu\_utils\etpu_util_ext.c" top_line="1384" start_pos="44248" len="0" sel_text="" />
+  <TabPage type="Source" ctrl="edit1TabControl" file="etpu_gct.c" top_line="168" start_pos="9751" len="0" sel_text="" />
+  <TabPage type="Script" ctrl="edit1TabControl" file="UART_driver.Cpu32Command" top_line="0" start_pos="576" len="0" sel_text="" />
+  <TabPage type="Source" ctrl="edit2TabControl" file="etpu\uart\etpu_uart.h" top_line="59" sel="true" start_pos="2702" len="0" sel_text="" />
+  <TabPage type="Source" ctrl="edit2TabControl" file="etpu\_etpu_set\etpu_set_defines.h" top_line="6" start_pos="1293" len="25" sel_text="ETPU_UART_FM0_PARITY_ENAB" />
+  <TabPage type="Source" ctrl="edit2TabControl" file="etpu_gct.h" top_line="35" start_pos="3762" len="13" sel_text="uart_2_config" />
+  <TabPage type="Source" ctrl="edit2TabControl" file="etpu\_utils\etpu_util_ext.h" top_line="137" start_pos="4760" len="25" sel_text="fs_etpu_set_interrupt_mas" />
+  <TabPage type="Source" ctrl="edit2TabControl" file="etpu\_etpu_set\etpu_auto_api.h" top_line="0" start_pos="0" len="0" sel_text="" />
+  <TabPage type="Source" ctrl="edit2TabControl" file="etpu\_etpu_set\etpu_set_struct.h" top_line="7" start_pos="1251" len="0" sel_text="" />
+  <TabPage type="Output" ctrl="output1TabControl" />
+  <TabPage type="LocalVariable" ctrl="output1TabControl" target="0">
+    <Columns width_1="233" width_2="119" />
+  </TabPage>
+  <TabPage type="ChannelFrame" ctrl="output2TabControl" target="1" channel="10">
+    <Columns width_1="215" />
+  </TabPage>
+  <TabPage type="RegisterWindow" ctrl="output2TabControl" target_tag="eTpu" win_type="FTWT_HOST_INTERFACE" target="eTPU_A" top_line="0" sel="true" />
+  <TabPage type="LocalVariable" ctrl="output2TabControl" target="1">
+    <Columns />
+  </TabPage>
+  <TabPage type="Watch" ctrl="output2TabControl">
+    <Columns width_1="338" width_3="186" />
+    <SymbolList>
+      <Symbol name="g_uart_2_rx_data" target="0" script="False" />
+    </SymbolList>
+  </TabPage>
+  <TabPage type="MemoryWindow" ctrl="output2TabControl" target="eTPU_A" fc="5" bpd="4" bpa="1" box="1" row="0" addr="3C" nib="0" cfr="0" />
+  <TabPage type="RegisterWindow" ctrl="projectTabControl" target_tag="eTpu" win_type="FTWT_REGISTER" target="eTPU_A" top_line="0" />
+  <TabPage type="Project" ctrl="projectTabControl" file="UART_driver.FullSysIdeProj" sel="true" />
+  <TabPage type="RegisterWindow" ctrl="projectTabControl" target_tag="Cpu32" win_type="FTWT_REGISTER" target="Host" top_line="0" />
+  <selected_project_node name="Link: UART.coff" />
+  <!--Saved last-used directories-->
+  <last_dir type="SourceAsmGtm" dir="etpu\_etpu_set\" />
+  <last_dir type="SourceH" dir="etpu\_etpu_set\" />
+  <search_dialog sub_dirs="true" scripts="true">
+    <find val="_CPHA" />
+    <find val="_ExitThread" />
+    <find val="shift_direction" />
+    <find val="etpu_a_tcr1_freq" />
+    <replace val="_CPHA" />
+    <replace val="_ExitThread" />
+    <replace val="shift_direction" />
+    <replace val="etpu_a_tcr1_freq" />
+    <directory val="C:\GIT\ASHWARE\Tests\Drivers\ETpuUART\" />
+    <directory val="C:\GIT\ASHWARE\Tests\Drivers\ETpuSPI\" />
+    <file_types val="*.c,*.h" />
+    <file_types val="*.ETpuCommand" />
+    <file_types val="*.Vector" />
+  </search_dialog>
+  <workshops enabled="True" active_index="2" />
+  <ide_is_setting>
+    <ETPU_ALERT_ON_OUTPUT_PIN_EVENT val="False" />
+  </ide_is_setting>
+  <step_asm_multiple val="10" />
+  <step_angle_teeth_multiple val="3" />
+  <is_goto_abs_angle val="false" />
+  <goto_absolute_angle cycles="1" degrees="2" hundredths="3" />
+  <goto_delta_angle cycles="4" degrees="5" hundredths="6" />
+  <goto_absolute_time ks="0" sec="0" ms="2" us="250" ns="0" />
+  <goto_delta_time ks="0" sec="0" ms="0" us="10" ns="0" />
+  <is_goto_abs_time val="false" />
+  <goto_line_num val="10" />
+  <mem_win_get_addr val="32176" v1="33352" v2="32968" v3="33280" v4="14364964" v5="48" />
+  <make_node target="Host" file="obj\etpu_util_ext.o" time="5249103825087120161">
+    <dependent_file file="etpu\_utils\etpu_util_ext.c" time="5248955758794384818" />
+    <dependent_file file="etpu\_utils\etpu_util_ext.h" time="5249025864558900004" />
+    <dependent_file file="etpu\_utils\typedefs.h" time="5248929071635518578" />
+    <dependent_file file="include\etpu_struct.h" time="5249026627561624508" />
+    <dependent_file file="include\typedefs.h" time="5244979414647387904" />
+    <dependent_file file="UART_driver.FullSysIdeProj" time="5249097879520435986" />
+  </make_node>
+  <make_node target="eTPU_A" file="etpu\_etpu_set\obj\etec_uart_rx.eao" time="5249104261913361977">
+    <dependent_file file="etpu\_etpu_set\etec_uart_rx.c" time="5249104258979048015" />
+    <dependent_file file="..\..\..\Builds\Include\ETpu_Std.h" time="5249009325211664682" />
+    <dependent_file file="..\..\..\Builds\Include\ETpu_Hw.h" time="5249089094045914182" />
+    <dependent_file file="..\..\..\Builds\Include\ETpu_Lib.h" time="5249009246858268805" />
+    <dependent_file file="etpu\_etpu_set\etec_uart.h" time="5249103801592787515" />
+    <dependent_file file="UART_driver.FullSysIdeProj" time="5249097879520435986" />
+  </make_node>
+  <make_node target="eTPU_A" file="etpu\_etpu_set\obj\etec_uart_tx.eao" time="5249104261915790504">
+    <dependent_file file="etpu\_etpu_set\etec_uart_tx.c" time="5249104258979157751" />
+    <dependent_file file="..\..\..\Builds\Include\ETpu_Std.h" time="5249009325211664682" />
+    <dependent_file file="..\..\..\Builds\Include\ETpu_Hw.h" time="5249089094045914182" />
+    <dependent_file file="..\..\..\Builds\Include\ETpu_Lib.h" time="5249009246858268805" />
+    <dependent_file file="etpu\_etpu_set\etec_uart.h" time="5249103801592787515" />
+    <dependent_file file="UART_driver.FullSysIdeProj" time="5249097879520435986" />
+  </make_node>
+  <make_node target="Host" file="obj\main.o" time="5249104331182575192">
+    <dependent_file file="main.c" time="5249103544992567725" />
+    <dependent_file file="..\..\..\Builds\Include\isrLib.h" time="5249075081292280513" />
+    <dependent_file file="..\..\..\Builds\Include\ScriptLib.h" time="5248851424849590795" />
+    <dependent_file file="etpu\_utils\etpu_util_ext.h" time="5249025864558900004" />
+    <dependent_file file="etpu\_utils\typedefs.h" time="5248929071635518578" />
+    <dependent_file file="include\etpu_struct.h" time="5249026627561624508" />
+    <dependent_file file="include\typedefs.h" time="5244979414647387904" />
+    <dependent_file file="etpu_gct.h" time="5249101153875100625" />
+    <dependent_file file="etpu\uart\etpu_uart.h" time="5249104331179653014" />
+    <dependent_file file="etpu\_utils\etpu_util_ext.h" time="5249025864558900004" />
+    <dependent_file file="etpu\_etpu_set\etpu_auto_api.h" time="5249011091300451383" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_defines.h" time="5249104261920951357" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_struct.h" time="5249104261921011197" />
+    <dependent_file file="UART_driver.FullSysIdeProj" time="5249097879520435986" />
+  </make_node>
+  <make_node target="Host" file="obj\etpu_gct.o" time="5249104331185000869">
+    <dependent_file file="etpu_gct.c" time="5249103769214140645" />
+    <dependent_file file="include\typedefs.h" time="5244979414647387904" />
+    <dependent_file file="etpu_gct.h" time="5249101153875100625" />
+    <dependent_file file="etpu\_utils\etpu_util_ext.h" time="5249025864558900004" />
+    <dependent_file file="etpu\_utils\typedefs.h" time="5248929071635518578" />
+    <dependent_file file="include\etpu_struct.h" time="5249026627561624508" />
+    <dependent_file file="include\typedefs.h" time="5244979414647387904" />
+    <dependent_file file="etpu\_etpu_set\etpu_set.h" time="5249010230543473893" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_defines.h" time="5249104261920951357" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_scm.h" time="5249104261921061058" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_idata.h" time="5249104261920921436" />
+    <dependent_file file="etpu\uart\etpu_uart.h" time="5249104331179653014" />
+    <dependent_file file="etpu\_utils\etpu_util_ext.h" time="5249025864558900004" />
+    <dependent_file file="etpu\_etpu_set\etpu_auto_api.h" time="5249011091300451383" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_defines.h" time="5249104261920951357" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_struct.h" time="5249104261921011197" />
+    <dependent_file file="include\mpc5554_vars.h" time="5249010228529541078" />
+    <dependent_file file="UART_driver.FullSysIdeProj" time="5249097879520435986" />
+  </make_node>
+  <make_node target="Host" file="obj\etpu_uart.o" time="5249104331187940089">
+    <dependent_file file="etpu\uart\etpu_uart.c" time="5249103808859773466" />
+    <dependent_file file="etpu\_utils\etpu_util_ext.h" time="5249025864558900004" />
+    <dependent_file file="etpu\_utils\typedefs.h" time="5248929071635518578" />
+    <dependent_file file="include\etpu_struct.h" time="5249026627561624508" />
+    <dependent_file file="include\typedefs.h" time="5244979414647387904" />
+    <dependent_file file="etpu\_etpu_set\etpu_auto_api.h" time="5249011091300451383" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_defines.h" time="5249104261920951357" />
+    <dependent_file file="etpu\_etpu_set\etpu_set_struct.h" time="5249104261921011197" />
+    <dependent_file file="etpu\uart\etpu_uart.h" time="5249104331179653014" />
+    <dependent_file file="etpu\_utils\etpu_util_ext.h" time="5249025864558900004" />
+    <dependent_file file="etpu\_etpu_set\etpu_auto_api.h" time="5249011091300451383" />
+    <dependent_file file="UART_driver.FullSysIdeProj" time="5249097879520435986" />
+  </make_node>
+  <make_node target="Host" file="UART_driver.Cpu32Command" time="5249104262282810189">
+    <dependent_file file="UART_driver.Cpu32Command" time="5249104262282810189" />
+  </make_node>
+  <source_file name="etpu\_etpu_set\etec_uart.h" tool="None" />
+  <!--=======================================================-->
+  <!--======    START TARGET-SPECIFIC SETTINGS        =======-->
+  <target name="Host" />
+  <!--======    END TARGET-SPECIFIC SETTINGS          =======-->
+  <!--=======================================================-->
+  <!--=======================================================-->
+  <!--======    START TARGET-SPECIFIC SETTINGS        =======-->
+  <target name="eTPU_A" />
+  <!--======    END TARGET-SPECIFIC SETTINGS          =======-->
+  <!--=======================================================-->
+</user>
